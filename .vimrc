@@ -10,7 +10,7 @@ Plug 'vim-syntastic/syntastic'							" Linter and syntax
 Plug 'tpope/vim-fugitive'								" Git pluggin
 Plug 'tpope/vim-surround'								" Surround with ( { etc
 " Autocomplete on vim
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-complreter' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-complreter' }
 call plug#end()
 
 " =============================================================================
@@ -20,6 +20,8 @@ filetype plugin indent on
 set nocompatible " not compatible with vi
 set autoread " detect when a file is changed 
 set backspace=indent,eol,start " make backspace behave in a sane manner
+set path+=** " recursive :find files inside the project tree
+
 
 " --- Tab control ---
 set noexpandtab " tabs ftw
@@ -58,8 +60,8 @@ syntax on				" switch syntax highlighting on
 
 set number				" show line numbers
 " set relativenumber		" show relative line numbers
-" set showcmd				" display typed commands
-" set wildmenu			" command line suggestions
+set showcmd				" display typed commands
+set wildmenu			" command line suggestions
 
 " Line wrapping
 set wrap                    " turn on line wrapping
@@ -75,7 +77,7 @@ set smartindent
 
 " toggle invisible characters
 set list
-"set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬
 "trail:extends:,precedes:
 " set showbreak=J
 
@@ -129,7 +131,11 @@ let g:ycm_server_python_interpreter = 'python2.7'
 " Functions
 " _____________________________________________________________________________
 
-" --- CLANG Fonsions ---
+
+" --- CTAGS ---
+command! MakeTags !ctags -R .
+
+" --- CLANG Functions ---
 " Those lines were added for clang-check to work within vim by pressing F5
 
 function! ClangCheckImpl(cmd)
