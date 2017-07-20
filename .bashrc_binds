@@ -1,0 +1,5 @@
+bind -x '"^[[23~":"find . -name  \"*"' # <F11>
+bind '"^[[24~":"grep -iIR -A 3 -B 3 \""' # <F12>
+bind '"^[OS":"cmake ..^M"' # <F4>
+bind '"^[[15~":"make^M"' # <F5>
+bind '"^[[17~":"make VERBOSE=1^M"' # <F6>
