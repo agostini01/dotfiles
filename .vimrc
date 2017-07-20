@@ -160,10 +160,9 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " ctrlp ignores patterns
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git',
-	\ 'file': '\.so'
-	\ }
-
+			\ 'dir':  '\v[\/]((\.(git|hg|svn))|build)$',
+			\ 'file': '\v\.(exe|so|dll)$'
+			\ }
 " You Complete me
 let g:ycm_server_python_interpreter = 'python2.7'
 
