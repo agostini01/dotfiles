@@ -6,11 +6,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'								" Sensible setup
 Plug 'kien/ctrlp.vim'									" Fuzzy search
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }	" On-demand loading
-Plug 'vim-syntastic/syntastic'							" Linter and syntax
+" Plug 'vim-syntastic/syntastic'							" Linter and syntax
 Plug 'tpope/vim-fugitive'								" Git pluggin
 Plug 'tpope/vim-surround'								" Surround with ( { etc
+Plug 'SirVer/ultisnips'									" Snippets of code Engine
+Plug 'honza/vim-snippets'								" Snippets of code Engine
 " Autocomplete on vim
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-complreter' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+"
+" User inerface
+" Plug 'altercation/vim-colors-solarized' " Solarized theme
+Plug 'vim-airline/vim-airline'					" Fancy botton bar
+Plug 'vim-airline/vim-airline-themes'   " Themes for the botton bar
 call plug#end()
 
 " =============================================================================
@@ -26,9 +33,9 @@ set path+=** " recursive :find files inside the project tree
 " --- Tab control ---
 set noexpandtab " tabs ftw
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-set tabstop=4 " the visible width of tabs
-set softtabstop=4 " edit as if the tabs are 4 characters wide
-set shiftwidth=4 " number of spaces to use for indent and unindent
+set tabstop=2 " the visible width of tabs
+set softtabstop=2 " edit as if the tabs are 4 characters wide
+set shiftwidth=2 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
 
 " set a map leader for more key combos
@@ -50,11 +57,15 @@ set mat=5				" how many tenths of a second to blink
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-" error bells
+" --- error bells ---
 set noerrorbells
 set visualbell
 set t_vb=
 set tm=500
+
+" --- vertical line ---
+set colorcolumn=80,81,82,83
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 syntax on				" switch syntax highlighting on
 
@@ -63,33 +74,60 @@ set number				" show line numbers
 set showcmd				" display typed commands
 set wildmenu			" command line suggestions
 
-" Line wrapping
+" --- Line wrapping ---
 set wrap                    " turn on line wrapping
 set wrapmargin=8            " wrap lines when coming within n characters from side
 set linebreak               " set soft wrapping
 set showbreak=…             " show ellipsis at breaking
 
-" line breaking
+" --- line breaking ---
 set textwidth=0 wrapmargin=0
 
 set autoindent              " automatically set indent of new line
-set smartindent
+"set smartindent
 
-" toggle invisible characters
-set list
-set listchars=tab:▸\ ,eol:¬
+" --- toggle invisible characters ---
+"set list
+"set listchars=tab:▸\ ,eol:¬
 "trail:extends:,precedes:
-" set showbreak=J
+"set showbreak=...
 
-" highlight conflicts
+" --- highlight conflicts ---
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-" make backspace behave in a sane manner
-set backspace=indent,eol,start
+" --- Some Re-maps ---
+" tab navigation
+nnoremap <F7> gT
+nnoremap <F8> gt
+
+" save document
+nnoremap <F2> :w<cr>
+
+" reload .vimrc
+nnoremap <F12> :source ~/.vimrc<cr>
+
+" search for text under selection
+vnoremap <leader>f "hy/<C-r>h<cr>
+
+" replace text under selection
+vnoremap <leader>r "hy:%s/<C-r>h//g<left><left>
+" with confirm prompt
+vnoremap <leader>R "hy:%s/<C-r>h//gc<left><left><left>
 
 " =============================================================================
 " Plugin Configs
 " _____________________________________________________________________________
+
+" --- Solarized theme ---
+"set background=light
+"colorscheme solarized
+
+" --- Airline custom botton bar ---
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 0
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_theme='solarized'
 
 " ---   Nerdtree ---
 " close after a file is opened
@@ -103,14 +141,16 @@ nmap <silent> <leader>k :NERDTreeToggle<cr>
 nmap <silent> <leader>y :NERDTreeFind<cr>
 
 " --- Syntastic ---
-set statusline+=%#warnignmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warnignmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_pop_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq =0
+"let g:syntastic_quiet_messages = { "type": "style" }
+
+"let g:syntastic_always_pop_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
 " --- Fuzzy Search ---
 nmap <silent> <leader>r :CtrlBuffer<cr>
