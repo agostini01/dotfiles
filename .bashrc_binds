@@ -1,5 +1,17 @@
-bind -x '"^[[23~":"find . -name  \"*"' # <F11>
-bind '"^[[24~":"grep -iIR -A 3 -B 3 \""' # <F12>
-bind '"^[OS":"cmake ..^M"' # <F4>
-bind '"^[[15~":"make^M"' # <F5>
-bind '"^[[17~":"make VERBOSE=1^M"' # <F6>
+# This file must be sourced to work, you should add the next line to the bash_rc
+# source .bashrc_binds
+# 
+# It will bind the key in the comment to the function after ":"
+
+# These DO NOT auto-execute
+# The folling binds do not auto-execute so it is possible to finish the command
+# e.g. <F11> will type a find command and wait for the user to finish and press
+# <Enter> to execute it
+bind '"\e[23~":"find . -name  \"*"' # <F11>
+bind '"\e[24~":"grep -iIR -A 3 -B 3 \""' # <F12>
+
+
+# These auto-execute
+bind -x '"\eOS":"cmake .."' # <F4>
+bind -x '"\e[15~":"make"' # <F5>
+bind -x '"\e[17~":"make VERBOSE=1"' # <F6>
