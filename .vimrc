@@ -13,6 +13,7 @@ Plug 'SirVer/ultisnips'									" Snippets of code Engine
 Plug 'honza/vim-snippets'								" Snippets of code Engine
 " Autocomplete on vim
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+" Plug 'LucHermitte/vim-refactor'
 "
 " User inerface
 " Plug 'altercation/vim-colors-solarized' " Solarized theme
@@ -31,7 +32,7 @@ set path+=** " recursive :find files inside the project tree
 
 
 " --- Tab control ---
-set noexpandtab " tabs ftw
+set expandtab " tabs are spaces
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
 set tabstop=2 " the visible width of tabs
 set softtabstop=2 " edit as if the tabs are 4 characters wide
@@ -56,6 +57,10 @@ set showmatch			" show matching braces
 set mat=5				" how many tenths of a second to blink
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+
+" --- Enable caps lock to Escape --- (only works on linux host)
+"au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+"au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
 " --- error bells ---
 set noerrorbells
@@ -86,6 +91,12 @@ set textwidth=0 wrapmargin=0
 set autoindent              " automatically set indent of new line
 "set smartindent
 
+" --- Code folding ---
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 " --- toggle invisible characters ---
 "set list
 "set listchars=tab:▸\ ,eol:¬
@@ -95,16 +106,25 @@ set autoindent              " automatically set indent of new line
 " --- highlight conflicts ---
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+
+" --- disable autocomment next line ---
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " --- Some Re-maps ---
 " tab navigation
 nnoremap <F7> gT
 nnoremap <F8> gt
+nnoremap <leader><F7> :tabm -1<CR>
+nnoremap <leader><F8> :tabm +1<CR>
 
 " save document
 nnoremap <F2> :w<cr>
 
 " reload .vimrc
 nnoremap <F12> :source ~/.vimrc<cr>
+
+" open ~/.vimrc in a new tab for editing
+nnoremap <F11> :tabe ~/.vimrc<cr>
 
 " search for text under selection
 vnoremap <leader>f "hy/<C-r>h<cr>
@@ -113,6 +133,7 @@ vnoremap <leader>f "hy/<C-r>h<cr>
 vnoremap <leader>r "hy:%s/<C-r>h//g<left><left>
 " with confirm prompt
 vnoremap <leader>R "hy:%s/<C-r>h//gc<left><left><left>
+
 
 " =============================================================================
 " Plugin Configs
@@ -123,7 +144,7 @@ vnoremap <leader>R "hy:%s/<C-r>h//gc<left><left><left>
 "colorscheme solarized
 
 " --- Airline custom botton bar ---
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -172,33 +193,43 @@ let g:ycm_server_python_interpreter = 'python2.7'
 
 
 " --- CTAGS ---
-command! MakeTags !ctags -R .
+command! MakeTags !ctags -R --exclude=.git .
+" CTRL+\	Opens tag in a new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" ALT+]		Opens tag in a vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " --- CLANG Functions ---
 " Those lines were added for clang-check to work within vim by pressing F5
 
 function! ClangCheckImpl(cmd)
-  if &autowrite | wall | endif
-  echo "Running " . a:cmd . " ..."
-  let l:output = system(a:cmd)
-  cexpr l:output
-  cwindow
-  let w:quickfix_title = a:cmd
-  if v:shell_error != 0
-    cc
-  endif
-  let g:clang_check_last_cmd = a:cmd
+	if &autowrite | wall | endif
+	echo "Running " . a:cmd . " ..."
+	let l:output = system(a:cmd)
+	cexpr l:output
+	cwindow
+	let w:quickfix_title = a:cmd
+	if v:shell_error != 0
+		cc
+	endif
+	let g:clang_check_last_cmd = a:cmd
 endfunction
 
 function! ClangCheck()
-  let l:filename = expand('%')
-  if l:filename =~ '\.\(cpp\|cxx\|cc\|c\)$'
-    call ClangCheckImpl("clang-check " . l:filename)
-  elseif exists("g:clang_check_last_cmd")
-    call ClangCheckImpl(g:clang_check_last_cmd)
-  else
-    echo "Can't detect file's compilation arguments and no previous clang-check invocation!"
-  endif
+	let l:filename = expand('%')
+	if l:filename =~ '\.\(cpp\|cxx\|cc\|c\)$'
+		call ClangCheckImpl("clang-check " . l:filename)
+	elseif exists("g:clang_check_last_cmd")
+		call ClangCheckImpl(g:clang_check_last_cmd)
+	else
+		echo "Can't detect file's compilation arguments and no previous clang-check invocation!"
+	endif
 endfunction
 
 nmap <silent> <F5> :call ClangCheck()<CR><CR>
+
+function! ClangFormat()
+  :%! clang-format-4.0 %
+endfunction
+
+map <C-k> :call ClangFormat()<CR><CR>
