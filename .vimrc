@@ -229,7 +229,7 @@ endfunction
 nmap <silent> <F5> :call ClangCheck()<CR><CR>
 
 function! ClangFormat()
-  :%! clang-format-4.0 %
+  :%! clang-format %
 endfunction
 
 map <C-k> :call ClangFormat()<CR><CR>
