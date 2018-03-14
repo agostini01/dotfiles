@@ -4,11 +4,12 @@
     git clone https://github.com/agostini01/dotfiles.git
 
     ln -sf dotfiles/.gitignore_global .gitignore_global
-    ln -sf dotfiles/.tmux.conf        .tmux.conf
     ln -sf dotfiles/.vimrc            .vimrc
     ln -sf dotfiles/.ctags            .ctags
     ln -sf dotfiles/.inputrc          .inputrc
 
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    ln -sf dotfiles/.tmux.conf        .tmux.conf
 
 And perhaps you should add some of the key bindings to you bashrc file
 
