@@ -18,5 +18,9 @@ Session.vim
 # Temporary
 .netrwhist
 *~
+
 # Auto-generated tag files
 tags
+
+# Some project specific folders
+build

@@ -4,7 +4,7 @@ set encoding=utf-8
 " _____________________________________________________________________________
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'								" Sensible setup
-Plug 'kien/ctrlp.vim'									" Fuzzy search
+Plug 'kien/ctrlp.vim'									  " Fuzzy search
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }	" On-demand loading
 " Plug 'vim-syntastic/syntastic'							" Linter and syntax
 Plug 'tpope/vim-fugitive'								" Git pluggin
@@ -26,7 +26,7 @@ call plug#end()
 " _____________________________________________________________________________
 filetype plugin indent on
 set nocompatible " not compatible with vi
-set autoread " detect when a file is changed 
+set autoread " detect when a file is changed
 set backspace=indent,eol,start " make backspace behave in a sane manner
 set path+=** " recursive :find files inside the project tree
 
@@ -92,7 +92,7 @@ set autoindent              " automatically set indent of new line
 "set smartindent
 
 " --- Code folding ---
-set foldmethod=indent   
+set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
@@ -144,14 +144,19 @@ vnoremap <leader>R "hy:%s/<C-r>h//gc<left><left><left>
 "colorscheme solarized
 
 " --- Airline custom botton bar ---
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_theme='solarized'
+let g:airline_theme='minimalist'
 
 " ---   Nerdtree ---
-" close after a file is opened
+
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeQuitOnOpen=0
 let NERDTreeShowHidden=1 " show hidden files in NERDTree
@@ -181,9 +186,9 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " ctrlp ignores patterns
 let g:ctrlp_custom_ignore = {
-			\ 'dir':  '\v[\/]((\.(git|hg|svn))|build)$',
-			\ 'file': '\v\.(exe|so|dll)$'
-			\ }
+      \ 'dir':  '\v[\/]((\.(git|hg|svn))|build)$',
+      \ 'file': '\v\.(exe|so|dll)$'
+      \ }
 " You Complete me
 let g:ycm_server_python_interpreter = 'python2.7'
 
@@ -203,27 +208,27 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " Those lines were added for clang-check to work within vim by pressing F5
 
 function! ClangCheckImpl(cmd)
-	if &autowrite | wall | endif
-	echo "Running " . a:cmd . " ..."
-	let l:output = system(a:cmd)
-	cexpr l:output
-	cwindow
-	let w:quickfix_title = a:cmd
-	if v:shell_error != 0
-		cc
-	endif
-	let g:clang_check_last_cmd = a:cmd
+  if &autowrite | wall | endif
+  echo "Running " . a:cmd . " ..."
+  let l:output = system(a:cmd)
+  cexpr l:output
+  cwindow
+  let w:quickfix_title = a:cmd
+  if v:shell_error != 0
+    cc
+  endif
+  let g:clang_check_last_cmd = a:cmd
 endfunction
 
 function! ClangCheck()
-	let l:filename = expand('%')
-	if l:filename =~ '\.\(cpp\|cxx\|cc\|c\)$'
-		call ClangCheckImpl("clang-check " . l:filename)
-	elseif exists("g:clang_check_last_cmd")
-		call ClangCheckImpl(g:clang_check_last_cmd)
-	else
-		echo "Can't detect file's compilation arguments and no previous clang-check invocation!"
-	endif
+  let l:filename = expand('%')
+  if l:filename =~ '\.\(cpp\|cxx\|cc\|c\)$'
+    call ClangCheckImpl("clang-check " . l:filename)
+  elseif exists("g:clang_check_last_cmd")
+    call ClangCheckImpl(g:clang_check_last_cmd)
+  else
+    echo "Can't detect file's compilation arguments and no previous clang-check invocation!"
+  endif
 endfunction
 
 nmap <silent> <F5> :call ClangCheck()<CR><CR>

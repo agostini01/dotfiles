@@ -12,6 +12,6 @@ bind '"\e[24~":"grep -iIR -A 3 -B 3 \""' # <F12>
 
 
 # These auto-execute
-bind -x '"\eOS":"cmake .."' # <F4>
+bind -x '"\eOS":"cmake -DCMAKE_USER_MAKE_RULES_OVERRIDE=~/dotfiles/.ClangOverrides.txt .."' # <F4>
 bind -x '"\e[15~":"make"' # <F5>
-bind -x '"\e[17~":"make VERBOSE=1"' # <F6>
+#bind -x '"\e[17~":"make VERBOSE=1"' # <F6>
