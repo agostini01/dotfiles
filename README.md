@@ -4,6 +4,8 @@
     git clone https://github.com/agostini01/dotfiles.git
 
     ln -sf dotfiles/.gitignore_global .gitignore_global
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     ln -sf dotfiles/.vimrc            .vimrc
     ln -sf dotfiles/.ctags            .ctags
     ln -sf dotfiles/.inputrc          .inputrc
