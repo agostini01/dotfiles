@@ -42,3 +42,13 @@ Remaps tmux `Ctrl+b` to `Ctrl+a`.
 
 * `Ctrl+a -` splits window vertically
 * `Ctrl+a |` splits window side by side (note the vertical bar "|" character)
+
+## Configure X1Y3 trackpad and nav buttons
+
+The script `conf-x1y3-trackpad.sh` requires to be run on resume or startup
+for this reason this script should be called at user login.
+
+This must be executed once so it gets called by you login manager such as sddm.
+```
+echo -e "\n[[ -f ~/dotfiles/conf-x1y3-trackpad.sh ]] && . ~/dotfiles/conf-x1y3-trackpad.sh" >> ~/.bash_profile
+```
