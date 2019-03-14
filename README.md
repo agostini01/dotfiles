@@ -52,3 +52,11 @@ This must be executed once so it gets called by you login manager such as sddm.
 ```
 echo -e "\n[[ -f ~/dotfiles/conf-x1y3-trackpad.sh ]] && . ~/dotfiles/conf-x1y3-trackpad.sh" >> ~/.bash_profile
 ```
+
+## Thinkpad x1y3 fan control:
+
+Install `thinkfan` and copy the configuration files to the right locations:
+```
+sudo cp ~/dotfiles/.thinkfan/thinkfan.conf /etc/thinkfan.conf
+sudo cp ~/dotfiles/.thinkfan/thinkfan /etc/default/thinkfan
+```
