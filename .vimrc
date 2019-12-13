@@ -74,12 +74,12 @@ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 syntax on				" switch syntax highlighting on
 
-set number				" show line numbers
-" set relativenumber		" show relative line numbers
-set showcmd				" display typed commands
-set wildmenu			" command line suggestions
-
-" --- Line wrapping ---
+set number				          " show line numbers
+" set relativenumber        " show relative line numbers
+set showcmd				          " display typed commands
+set wildmenu			          " command line suggestions
+set wildmode=longest,list   " complete longest common str, then ls others
+	" --- Line wrapping ---
 set wrap                    " turn on line wrapping
 set wrapmargin=8            " wrap lines when coming within n characters from side
 set linebreak               " set soft wrapping
