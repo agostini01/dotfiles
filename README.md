@@ -3,15 +3,18 @@
     cd ~
     git clone https://github.com/agostini01/dotfiles.git
 
-    ln -sf dotfiles/.gitignore_global .gitignore_global
+    ln -sf ~/dotfiles/.gitignore_global .gitignore_global
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    ln -sf dotfiles/.vimrc            .vimrc
-    ln -sf dotfiles/.ctags            .ctags
-    ln -sf dotfiles/.inputrc          .inputrc
+    ln -sf ~/dotfiles/.vimrc            .vimrc
+    ln -sf ~/dotfiles/.ctags            .ctags
+    ln -sf ~/dotfiles/.inputrc          .inputrc
 
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    ln -sf dotfiles/.tmux.conf        .tmux.conf
+    ln -sf ~/dotfiles/.tmux.conf        .tmux.conf
+
+    mkdir -p ~/.config/Code/User/
+    ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
 
 And perhaps you should add some of the key bindings to you bashrc file
 
