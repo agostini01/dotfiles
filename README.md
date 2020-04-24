@@ -16,6 +16,9 @@
     mkdir -p ~/.config/Code/User/
     ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
 
+    echo 'export VISUAL=vim' >> $HOME/.bashrc
+    echo 'export EDITOR=vim' >> $HOME/.bashrc
+
 And perhaps you should add some of the key bindings to you bashrc file
 
     cat dotfiles/.bashrc_binds  >> .bashrc
