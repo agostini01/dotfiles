@@ -1,5 +1,17 @@
 # Setting up windows to sane development configs
 
+# Important steps
+
+Make sure you have the windows PRO version installed:
+
+```
+1. Click Win+S at the same time.
+2. Type in 'Activation settings' and open it.
+3. Take a note of your 'Edition'.
+```
+
+If you're Edition is anything but 'Windows 10 Pro', fix it.
+
 # Some applications to install
 
 * autohotkey (windows store)
