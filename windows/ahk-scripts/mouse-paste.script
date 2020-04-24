@@ -1,0 +1,5 @@
+; This is a AutoHotKey Script
+; 
+; It enables middle mouse button paste on windows
+MButton::^v
+
