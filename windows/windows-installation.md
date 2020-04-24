@@ -20,6 +20,8 @@ C:\Users\Agostini\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe
 
 ## Inside wsl
 
+Copy default `config` from gist.
+
 After `.ssh/config` has been set, one should make sure that only the user has
 the correct read permissions:
 
