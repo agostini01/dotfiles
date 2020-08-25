@@ -16,6 +16,9 @@
     mkdir -p ~/.config/Code/User/
     ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
 
+    echo '# Prety git log' >> $HOME/.bashrc
+    echo 'alias git-adog="git log --all --decorate --oneline --graph"' >> $HOME/.bashrc
+
     echo 'export VISUAL=vim' >> $HOME/.bashrc
     echo 'export EDITOR=vim' >> $HOME/.bashrc
 
