@@ -15,12 +15,15 @@
 
     mkdir -p ~/.config/Code/User/
     ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
+    
+    echo "[ -f /usr/share/bash-completion/completions/git ] && source /usr/share/bash-completion/completions/git" >> ~/.bashrc
 
     echo '# Prety git log' >> $HOME/.bashrc
     echo 'alias git-adog="git log --all --decorate --oneline --graph"' >> $HOME/.bashrc
 
     echo 'export VISUAL=vim' >> $HOME/.bashrc
     echo 'export EDITOR=vim' >> $HOME/.bashrc
+
 
 And perhaps you should add some of the key bindings to you bashrc file
 
@@ -30,6 +33,17 @@ If you are using cmake for your projects, you can make use of the
 .ClangOverrides file
 
     cmake -DCMAKE_USER_MAKE_RULES_OVERRIDE=~/dotfiles/.ClangOverrides.txt ..
+
+## MacOS
+
+```
+# Allow press and hold on vscode
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+    
+
+# Bash completion on mac
+echo "[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion" >> ~/.bashrc
+```
 
 # Some features
 
