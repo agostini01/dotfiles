@@ -23,4 +23,5 @@ Session.vim
 tags
 
 # Some project specific folders
-build
+/build*
+/install*

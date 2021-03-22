@@ -3,7 +3,8 @@
     cd ~
     git clone https://github.com/agostini01/dotfiles.git
 
-    ln -sf ~/dotfiles/.gitignore_global .gitignore_global
+    mkdir -p ~/.config/git
+    ln -sf ~/dotfiles/.gitignore_global ~/.config/git/ignore
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     ln -sf ~/dotfiles/.vimrc            .vimrc
