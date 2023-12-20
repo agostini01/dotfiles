@@ -46,6 +46,14 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 echo "[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion" >> ~/.bashrc
 ```
 
+### Brew packges
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install --cask docker visual-studio-code rectangle  
+brew install wget curl 
+```
+
 # Some features
 
 ## .ctags
