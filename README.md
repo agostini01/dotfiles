@@ -51,7 +51,13 @@ echo "[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion"
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install --cask docker visual-studio-code rectangle  
-brew install wget curl 
+brew install wget curl gh
+```
+
+#### Install commands fro github copilot
+
+```bash
+gh auth login
 ```
 
 # Some features
