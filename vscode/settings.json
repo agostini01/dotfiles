@@ -1,7 +1,5 @@
 {
-    "docker.host":"tcp://localhost:23742", // ssh -N -L localhost:23742:/var/run/docker.sock  agostini@nucar.aurora01
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
+    "telemetry.telemetryLevel": "off",
     "editor.quickSuggestions": {
       "other": false,
       "comments": false,
@@ -18,7 +16,6 @@
       //  "activityBarBadge.background": "#007acc",
       //  "sideBarTitle.foreground": "#bbbbbb"
       },
-      "window.zoomLevel": 0,
 
       // Vim customizations
       "vim.leader": ",",
@@ -30,8 +27,7 @@
         // "<F7>": true,
         // "<F8>": true,
       },
-
-
+      
       "vim.easymotion": true,
       "vim.sneak": true,
       "vim.incsearch": true,
@@ -61,7 +57,6 @@
       // Other customizations
       "editor.minimap.enabled": false,
       "terminal.external.linuxExec": "konsole",
-      "workbench.colorTheme": "Dark+ Material",
       "editor.renderControlCharacters": false,
       "sequencediagrams.diagram.style": "simple",
       "[cpp]": {},
@@ -71,7 +66,20 @@
       "files.associations": {
         "*.cu": "cpp",
         "*.cuh": "cpp"
-      }
-
+      },
+      "editor.inlineSuggest.enabled": true,
+      "cmake.configureOnOpen": false,
+      "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false
+      },
+      "diffEditor.maxComputationTime": 0,
+      "terminal.integrated.inheritEnv": false,
+      "git.confirmSync": false,
+      "workbench.colorTheme": "Default Light Modern",
+      "cmake.showOptionsMovedNotification": false,
+      "accessibility.voice.keywordActivation": "chatInView",
 
 }

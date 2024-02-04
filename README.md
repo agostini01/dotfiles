@@ -1,5 +1,7 @@
 # How to use?
 
+
+```bash
     cd ~
     git clone https://github.com/agostini01/dotfiles.git
 
@@ -14,8 +16,16 @@
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     ln -sf ~/dotfiles/.tmux.conf        .tmux.conf
 
-    mkdir -p ~/.config/Code/User/
-    ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
+
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        mkdir -p ~/Library/Application\ Support/Code/User/
+        ln -sf ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+        ln -sf ~/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+    else
+        mkdir -p ~/.config/Code/User/
+        ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
+        ln -sf ~/dotfiles/vscode/keybindings.json ~/.config/Code/User/keybindings.json
+    fi
     
     echo "[ -f /usr/share/bash-completion/completions/git ] && source /usr/share/bash-completion/completions/git" >> ~/.bashrc
 
@@ -24,6 +34,7 @@
 
     echo 'export VISUAL=vim' >> $HOME/.bashrc
     echo 'export EDITOR=vim' >> $HOME/.bashrc
+```
 
 
 And perhaps you should add some of the key bindings to you bashrc file

@@ -1,0 +1,23 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "cmd+l",
+        "command": "editor.action.inlineSuggest.acceptNextWord",
+        "when": "inlineSuggestionVisible && !editorReadonly"
+    },
+    {
+        "key": "cmd+right",
+        "command": "-editor.action.inlineSuggest.acceptNextWord",
+        "when": "inlineSuggestionVisible && !editorReadonly"
+    },
+    {
+        "key": "cmd+u",
+        "command": "workbench.action.chat.startVoiceChat",
+        "when": "!voiceChatInProgress"
+    },
+    {
+        "key": "cmd+u",
+        "command": "workbench.action.chat.stopListeningAndSubmit",
+        "when": "voiceChatInProgress"
+    }
+]
