@@ -1,85 +1,97 @@
 {
-    "telemetry.telemetryLevel": "off",
-    "editor.quickSuggestions": {
-      "other": false,
-      "comments": false,
-      "strings": false
-    },
-    "editor.rulers": [80],             
-    "workbench.colorCustomizations": {
-      //  "titleBar.activeBackground": "#000000",
-        // "editor.background": "#000000",
-        "editorRuler.foreground": "#979797",
-      //  "editor.foreground": "#d4d4d4",
-      //  "editorIndentGuide.background": "#404040",
-      //  "editorRuler.foreground": "#333333",
-      //  "activityBarBadge.background": "#007acc",
-      //  "sideBarTitle.foreground": "#bbbbbb"
-      },
-
-      // Vim customizations
-      "vim.leader": ",",
-      "vim.handleKeys": {
-        "<C-o>": true,
-        "<C-n>": true,
-        "<C-j>": false,
-        "<C-k>": false,
-        // "<F7>": true,
-        // "<F8>": true,
-      },
-      
-      "vim.easymotion": true,
-      "vim.sneak": true,
-      "vim.incsearch": true,
-      "vim.useSystemClipboard": true,
-      "vim.useCtrlKeys": true,
-      "vim.hlsearch": true,
-      // These do not work due to F keys mapping in VSCode
-      // "vim.normalModeKeyBindings": [
-      //   {
-      //     "before": ["<F7>"],
-      //     "after": ["gT"]
-      //   },
-      //   {
-      //     "before": ["<F8>"],
-      //     "after": ["gt"]
-      //   },
-      //   {
-      //     "before": ["<leader>","<F7>"],
-      //     "after": [":tabm -1"]
-      //   },
-      //   {
-      //     "before": ["<leader>","<F8>"],
-      //     "after": [":tabm +1"]
-      //   },
-      // ],
-
-      // Other customizations
-      "editor.minimap.enabled": false,
-      "terminal.external.linuxExec": "konsole",
-      "editor.renderControlCharacters": false,
-      "sequencediagrams.diagram.style": "simple",
-      "[cpp]": {},
-      "git.ignoreLegacyWarning": true,
-
-      // CUDA
-      "files.associations": {
-        "*.cu": "cpp",
-        "*.cuh": "cpp"
-      },
-      "editor.inlineSuggest.enabled": true,
-      "cmake.configureOnOpen": false,
-      "github.copilot.enable": {
-        "*": true,
-        "plaintext": true,
-        "markdown": true,
-        "scminput": false
-      },
-      "diffEditor.maxComputationTime": 0,
-      "terminal.integrated.inheritEnv": false,
-      "git.confirmSync": false,
-      "workbench.colorTheme": "Default Light Modern",
-      "cmake.showOptionsMovedNotification": false,
-      "accessibility.voice.keywordActivation": "chatInView",
-
+  "telemetry.telemetryLevel": "off",
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+  "editor.rulers": [
+    80
+  ],
+  "workbench.colorCustomizations": {
+    //  "titleBar.activeBackground": "#000000",
+    // "editor.background": "#000000",
+    "editorRuler.foreground": "#979797",
+    //  "editor.foreground": "#d4d4d4",
+    //  "editorIndentGuide.background": "#404040",
+    //  "editorRuler.foreground": "#333333",
+    //  "activityBarBadge.background": "#007acc",
+    //  "sideBarTitle.foreground": "#bbbbbb"
+  },
+  // Vim customizations
+  "vim.leader": ",",
+  "vim.handleKeys": {
+    "<C-o>": true,
+    "<C-n>": true,
+    "<C-j>": false,
+    "<C-k>": false,
+    // "<F7>": true,
+    // "<F8>": true,
+  },
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  // These do not work due to F keys mapping in VSCode
+  // "vim.normalModeKeyBindings": [
+  //   {
+  //     "before": ["<F7>"],
+  //     "after": ["gT"]
+  //   },
+  //   {
+  //     "before": ["<F8>"],
+  //     "after": ["gt"]
+  //   },
+  //   {
+  //     "before": ["<leader>","<F7>"],
+  //     "after": [":tabm -1"]
+  //   },
+  //   {
+  //     "before": ["<leader>","<F8>"],
+  //     "after": [":tabm +1"]
+  //   },
+  // ],
+  // Other customizations
+  "editor.minimap.enabled": false,
+  "terminal.external.linuxExec": "konsole",
+  "editor.renderControlCharacters": false,
+  "sequencediagrams.diagram.style": "simple",
+  "git.ignoreLegacyWarning": true,
+  // CUDA
+  "files.associations": {
+    "*.cu": "cpp",
+    "*.cuh": "cpp"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "cmake.configureOnOpen": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false
+  },
+  "diffEditor.maxComputationTime": 0,
+  "terminal.integrated.inheritEnv": false,
+  "git.confirmSync": false,
+  "cmake.showOptionsMovedNotification": false,
+  "editor.formatOnSave": true,
+  "git.openRepositoryInParentFolders": "never",
+  "dev.containers.defaultExtensions": [
+    "Github.copilot"
+  ],
+  "remote.autoForwardPortsSource": "hybrid",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[cpp]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  },
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask"
+  ],
+  "cmake.showConfigureWithDebuggerNotification": false
 }
