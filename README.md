@@ -25,15 +25,16 @@
         mkdir -p ~/.config/Code/User/
         ln -sf ~/dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
         ln -sf ~/dotfiles/vscode/keybindings.json ~/.config/Code/User/keybindings.json
-    fi
     
-    echo "[ -f /usr/share/bash-completion/completions/git ] && source /usr/share/bash-completion/completions/git" >> ~/.bashrc
+        echo "[ -f /usr/share/bash-completion/completions/git ] && source /usr/share/bash-completion/completions/git" >> ~/.bashrc
 
-    echo '# Prety git log' >> $HOME/.bashrc
-    echo 'alias git-adog="git log --all --decorate --oneline --graph"' >> $HOME/.bashrc
+        echo '# Prety git log' >> $HOME/.bashrc
+        echo 'alias git-adog="git log --all --decorate --oneline --graph"' >> $HOME/.bashrc
 
-    echo 'export VISUAL=vim' >> $HOME/.bashrc
-    echo 'export EDITOR=vim' >> $HOME/.bashrc
+        echo 'export VISUAL=vim' >> $HOME/.bashrc
+        echo 'export EDITOR=vim' >> $HOME/.bashrc
+    fi
+
 ```
 
 
@@ -61,8 +62,8 @@ echo "[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion"
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install --cask docker visual-studio-code rectangle  
-brew install wget curl gh
+brew install --cask docker visual-studio-code rectangle  lm-studio moonlight
+brew install wget gh tmux
 ```
 
 #### Install commands fro github copilot
